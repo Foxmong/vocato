@@ -65,16 +65,16 @@ struct StudyHubView: View {
         NavigationStack {
             VStack(spacing: 16) {
                 NavigationLink(destination: StudySettingsView(initialQuizMode: .flashcards, studyVM: studyVM)) {
-                    GlassCard(title: "Flashcards", subtitle: "Swipe to review", systemImage: "rectangle.on.rectangle.angled")
+                    GlassCard(title: "플래시카드", subtitle: "카드를 뒤집어 학습", systemImage: "rectangle.on.rectangle.angled")
                 }
                 NavigationLink(destination: StudySettingsView(initialQuizMode: .multipleChoice, studyVM: studyVM)) {
-                    GlassCard(title: "Multiple Choice", subtitle: "Pick the meaning", systemImage: "checkmark.circle")
+                    GlassCard(title: "객관식", subtitle: "정답을 선택하세요", systemImage: "checkmark.circle")
                 }
                 NavigationLink(destination: StudySettingsView(initialQuizMode: .dictation, studyVM: studyVM)) {
-                    GlassCard(title: "받아쓰기", subtitle: "Type the answer", systemImage: "pencil.and.outline")
+                    GlassCard(title: "받아쓰기", subtitle: "정답을 입력하세요", systemImage: "pencil.and.outline")
                 }
                 NavigationLink(destination: StudySettingsView(initialQuizMode: .autoPlay, studyVM: studyVM)) {
-                    GlassCard(title: "자동재생", subtitle: "Auto play with TTS", systemImage: "play.circle")
+                    GlassCard(title: "자동재생", subtitle: "듣고 학습하세요", systemImage: "play.circle")
                 }
             }
             .padding()
@@ -112,7 +112,6 @@ struct StudySettingsView: View {
                     }
                     
                     QuestionCountSection(questionCount: $settings.questionCount)
-                    DifficultySelectionView(selectedDifficulty: $settings.difficulty)
                     FavoritesToggleView(includeFavorites: $settings.includeFavorites)
                     
                     StartStudyButton {
@@ -130,12 +129,9 @@ struct StudySettingsView: View {
                     }
                 }
             }
-            .background(
-                NavigationLink(
-                    destination: destinationView,
-                    isActive: $navigateToStudy
-                ) { EmptyView() }
-            )
+            .navigationDestination(isPresented: $navigateToStudy) {
+                destinationView
+            }
         }
     }
     
@@ -166,6 +162,160 @@ struct StudySettingsView: View {
         
         // 학습 화면으로 이동
         navigateToStudy = true
+    }
+}
+
+// MARK: - StudySettingsView SubViews
+extension StudySettingsView {
+    @ViewBuilder
+    func WordGroupSelectionView(selectedGroup: Binding<WordGroup>) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("단어 그룹")
+                .font(.headline)
+            
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 12) {
+                ForEach([WordGroup.all, WordGroup.favorites, WordGroup.difficult, WordGroup.mastered], id: \.self) { group in
+                    Button(action: {
+                        selectedGroup.wrappedValue = group
+                    }) {
+                        VStack(spacing: 8) {
+                            Image(systemName: group.iconName)
+                                .font(.title2)
+                            Text(group.displayName)
+                                .font(.caption)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(selectedGroup.wrappedValue == group ? Color.accentColor : Color(.systemGray6))
+                        .foregroundColor(selectedGroup.wrappedValue == group ? .white : .primary)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                    }
+                }
+            }
+        }
+    }
+    
+    @ViewBuilder
+    func QuizModeSelectionView(selectedMode: Binding<QuizMode>) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("퀴즈 방식")
+                .font(.headline)
+            
+            VStack(spacing: 8) {
+                ForEach([QuizMode.flashcards, QuizMode.dictation, QuizMode.autoPlay], id: \.self) { mode in
+                    Button(action: {
+                        selectedMode.wrappedValue = mode
+                    }) {
+                        HStack {
+                            Image(systemName: mode.iconName)
+                                .frame(width: 24)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(mode.displayName)
+                                    .font(.body)
+                                Text(mode.description)
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            Spacer()
+                            if selectedMode.wrappedValue == mode {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .foregroundColor(.accentColor)
+                            }
+                        }
+                        .padding()
+                        .background(selectedMode.wrappedValue == mode ? Color.accentColor.opacity(0.1) : Color(.systemGray6))
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                    }
+                    .foregroundColor(.primary)
+                }
+            }
+        }
+    }
+    
+    @ViewBuilder
+    func AutoPlaySettingsSection(autoPlayMode: Binding<AutoPlayMode>, autoPlayInterval: Binding<Double>) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("자동재생 설정")
+                .font(.headline)
+            
+            VStack(spacing: 16) {
+                // 재생 모드
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("재생 모드")
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                    
+                    Picker("재생 모드", selection: autoPlayMode) {
+                        Text("단어만").tag(AutoPlayMode.termOnly)
+                        Text("뜻만").tag(AutoPlayMode.meaningOnly)
+                        Text("둘 다").tag(AutoPlayMode.both)
+                        Text("읽지 않음").tag(AutoPlayMode.none)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                }
+                
+                // 간격 설정
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("넘기는 간격: \(Int(autoPlayInterval.wrappedValue))초")
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                    
+                    Slider(value: autoPlayInterval, in: 1...10, step: 1) {
+                        Text("간격")
+                    }
+                }
+            }
+            .padding()
+            .background(Color(.systemGray6))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+        }
+    }
+    
+    @ViewBuilder
+    func QuestionCountSection(questionCount: Binding<Int>) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("문제 수")
+                .font(.headline)
+            
+            HStack {
+                Text("문제 수: \(questionCount.wrappedValue)개")
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+                
+                Spacer()
+                
+                Stepper("", value: questionCount, in: 5...50, step: 5)
+            }
+            .padding()
+            .background(Color(.systemGray6))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+        }
+    }
+    
+    @ViewBuilder
+    func FavoritesToggleView(includeFavorites: Binding<Bool>) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("즐겨찾기 포함")
+                .font(.headline)
+            
+            Toggle("즐겨찾기 단어만 포함", isOn: includeFavorites)
+                .padding()
+                .background(Color(.systemGray6))
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+        }
+    }
+    
+    @ViewBuilder
+    func StartStudyButton(action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Text("학습 시작")
+                .font(.headline)
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.accentColor)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+        }
     }
 }
 

@@ -10,7 +10,7 @@ struct StudyMCQView: View {
     var body: some View {
         VStack(spacing: 16) {
             if vm.todaysQueue.isEmpty {
-                Text("No questions today")
+                Text("오늘 학습할 문제가 없습니다")
             } else {
                 let word = vm.todaysQueue[vm.currentIndex]
                 Text(word.term ?? "")

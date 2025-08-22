@@ -7,7 +7,6 @@ struct StudySettings {
     var quizMode: QuizMode = .flashcards
     var questionCount: Int = 10
     var includeFavorites: Bool = false
-    var difficulty: Difficulty = .all
     var autoPlayMode: AutoPlayMode = .both
     var autoPlayInterval: Double = 3.0
 }
@@ -19,6 +18,7 @@ enum WordGroup: String, CaseIterable {
     case reviewing = "복습 단어"
     case mastered = "마스터된 단어"
     case favorites = "즐겨찾기"
+    case difficult = "어려운 단어"
     
     var systemImage: String {
         switch self {
@@ -28,7 +28,16 @@ enum WordGroup: String, CaseIterable {
         case .reviewing: return "arrow.clockwise"
         case .mastered: return "checkmark.seal.fill"
         case .favorites: return "heart.fill"
+        case .difficult: return "exclamationmark.triangle.fill"
         }
+    }
+    
+    var iconName: String {
+        return systemImage
+    }
+    
+    var displayName: String {
+        return self.rawValue
     }
 }
 
@@ -44,6 +53,23 @@ enum QuizMode: String, CaseIterable {
         case .multipleChoice: return "checkmark.circle"
         case .dictation: return "pencil.and.outline"
         case .autoPlay: return "play.circle"
+        }
+    }
+    
+    var iconName: String {
+        return systemImage
+    }
+    
+    var displayName: String {
+        return self.rawValue
+    }
+    
+    var description: String {
+        switch self {
+        case .flashcards: return "카드를 뒤집어 정답 확인"
+        case .multipleChoice: return "4개 선택지 중 정답 선택"
+        case .dictation: return "듣고 타이핑으로 입력"
+        case .autoPlay: return "자동으로 단어와 뜻 재생"
         }
     }
 }
@@ -64,21 +90,7 @@ enum AutoPlayMode: String, CaseIterable {
     }
 }
 
-enum Difficulty: String, CaseIterable {
-    case all = "전체"
-    case easy = "쉬움"
-    case medium = "보통"
-    case hard = "어려움"
-    
-    var systemImage: String {
-        switch self {
-        case .all: return "circle"
-        case .easy: return "circle.fill"
-        case .medium: return "circle.fill"
-        case .hard: return "circle.fill"
-        }
-    }
-}
+
 
 
 final class StudyViewModel: ObservableObject {
@@ -225,18 +237,8 @@ final class StudyViewModel: ObservableObject {
             predicates.append(NSPredicate(format: "isMastered == true"))
         case .favorites:
             predicates.append(NSPredicate(format: "isFavorite == true"))
-        }
-        
-        // 난이도에 따른 필터링
-        switch settings.difficulty {
-        case .all:
-            break
-        case .easy:
-            predicates.append(NSPredicate(format: "correctCount >= 3"))
-        case .medium:
-            predicates.append(NSPredicate(format: "correctCount >= 1 AND correctCount < 3"))
-        case .hard:
-            predicates.append(NSPredicate(format: "correctCount == 0 OR wrongCount > correctCount"))
+        case .difficult:
+            predicates.append(NSPredicate(format: "importanceCount > 0"))
         }
         
         // 즐겨찾기 포함 여부

@@ -54,50 +54,59 @@ struct HomeView: View {
                     // 그룹별 단어 현황
                     VStack(alignment: .leading, spacing: 12) {
                         HStack {
-                            Text("그룹별 단어 현황")
+                            Text("그룹")
                                 .font(.headline)
                             
                             Spacer()
                             
                             NavigationLink(destination: GroupManagementView()) {
-                                Text("자세히 보기")
+                                Text("관리")
                                     .font(.caption)
                                     .foregroundStyle(Color("PrimaryGreen"))
                             }
                         }
                         .padding(.horizontal)
                         
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 12) {
-                                ForEach(WordGroup.allCases, id: \.self) { group in
-                                    VStack(spacing: 8) {
+                        // 계층형 그룹 리스트
+                        VStack(spacing: 8) {
+                            ForEach(WordGroup.allCases, id: \.self) { group in
+                                NavigationLink(destination: GroupManagementView()) {
+                                    HStack(spacing: 12) {
                                         Image(systemName: group.systemImage)
-                                            .font(.title2)
-                                            .foregroundStyle(Color("PrimaryGreen"))
-                                        
-                                        Text(group.rawValue)
-                                            .font(.caption)
-                                            .fontWeight(.medium)
-                                            .multilineTextAlignment(.center)
-                                        
-                                        Text("\(getWordCount(for: group))")
                                             .font(.title3)
-                                            .fontWeight(.bold)
-                                            .foregroundStyle(.primary)
+                                            .foregroundStyle(Color("PrimaryGreen"))
+                                            .frame(width: 24)
+                                        
+                                        VStack(alignment: .leading, spacing: 2) {
+                                            Text(group.rawValue)
+                                                .font(.body)
+                                                .fontWeight(.medium)
+                                                .foregroundStyle(.primary)
+                                            
+                                            Text("\(getWordCount(for: group))개")
+                                                .font(.caption)
+                                                .foregroundStyle(.secondary)
+                                        }
+                                        
+                                        Spacer()
+                                        
+                                        Image(systemName: "chevron.right")
+                                            .font(.caption)
+                                            .foregroundStyle(.secondary)
                                     }
-                                    .frame(width: 80)
                                     .padding()
                                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
                                 }
+                                .buttonStyle(PlainButtonStyle())
                             }
-                            .padding(.horizontal)
                         }
+                        .padding(.horizontal)
                     }
                     
                     // 다음 복습할 단어
                     if let nextWord = nextReviewWord {
                         VStack(alignment: .leading, spacing: 12) {
-                            Text("Next Review")
+                            Text("다음 복습")
                                 .font(.headline)
                                 .padding(.horizontal)
                             
@@ -113,7 +122,7 @@ struct HomeView: View {
                     // 즐겨찾기된 단어들
                     if !favoriteWords.isEmpty {
                         VStack(alignment: .leading, spacing: 12) {
-                            Text("Favorite Words")
+                            Text("즐겨찾기 단어")
                                 .font(.headline)
                                 .padding(.horizontal)
                             
@@ -258,6 +267,8 @@ struct HomeView: View {
             return words.filter { $0.isMastered }.count
         case .favorites:
             return words.filter { $0.isFavorite }.count
+        case .difficult:
+            return words.filter { $0.importanceCount > 0 }.count
         }
     }
 }
@@ -285,6 +296,8 @@ struct GroupManagementView: View {
             return words.filter { $0.isMastered }
         case .favorites:
             return words.filter { $0.isFavorite }
+        case .difficult:
+            return words.filter { $0.importanceCount > 0 }
         }
     }
     
@@ -388,6 +401,8 @@ struct GroupManagementView: View {
             return words.filter { $0.isMastered }.count
         case .favorites:
             return words.filter { $0.isFavorite }.count
+        case .difficult:
+            return words.filter { $0.importanceCount > 0 }.count
         }
     }
 }
