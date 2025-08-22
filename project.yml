@@ -1,0 +1,58 @@
+name: VocaTo
+options:
+  minimumXcodeGenVersion: 2.30.0
+  deploymentTarget:
+    iOS: "16.0"
+settings:
+  base:
+    IPHONEOS_DEPLOYMENT_TARGET: "16.0"
+    SWIFT_VERSION: "5.9"
+    PRODUCT_BUNDLE_IDENTIFIER: com.vocato.app
+    DEVELOPMENT_TEAM: ""
+    CURRENT_PROJECT_VERSION: 1
+    MARKETING_VERSION: 1.0.0
+packages: {}
+targets:
+  VocaTo:
+    type: application
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - path: VocaTo
+        excludes:
+          - "**/*.md"
+    resources:
+      - path: VocaTo/Resources/Assets.xcassets
+      - path: VocaTo/Model/VocaTo.xcdatamodeld
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.vocato.app
+    info:
+      path: VocaTo/Info.plist
+      properties:
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: true
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UILaunchScreen:
+          UIColorName: AccentColor
+    dependencies:
+      - target: VocaToWidget
+
+  VocaToWidget:
+    type: app-extension
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - path: VocaToWidget
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.vocato.app.widget
+    info:
+      path: VocaToWidget/Info.plist
+      properties:
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+

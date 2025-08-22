@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="24.6.0" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Word" representedClassName="Word" syncable="YES" codeGenerationType="class">
+        <attribute name="uuid" optional="NO" attributeType="String"/>
+        <attribute name="term" optional="NO" attributeType="String"/>
+        <attribute name="meaning" optional="NO" attributeType="String"/>
+        <attribute name="memo" optional="YES" attributeType="String"/>
+        <attribute name="synonyms" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" optional="NO" attributeType="Date"/>
+        <attribute name="nextReviewDate" optional="YES" attributeType="Date"/>
+        <attribute name="srsStage" optional="NO" attributeType="Integer 16" defaultValueString="0"/>
+        <attribute name="correctCount" optional="NO" attributeType="Integer 32" defaultValueString="0"/>
+        <attribute name="wrongCount" optional="NO" attributeType="Integer 32" defaultValueString="0"/>
+        <attribute name="isFavorite" optional="NO" attributeType="Boolean" defaultValueString="NO"/>
+        <attribute name="importanceCount" optional="NO" attributeType="Integer 32" defaultValueString="0"/>
+        <attribute name="accuracyCount" optional="NO" attributeType="Integer 32" defaultValueString="0"/>
+        <attribute name="lastAccuracyDate" optional="YES" attributeType="Date"/>
+        <attribute name="isMastered" optional="NO" attributeType="Boolean" defaultValueString="NO"/>
+    </entity>
+    <elements>
+        <element name="Word" positionX="-50" positionY="-50" width="128" height="224"/>
+    </elements>
+</model>
+
