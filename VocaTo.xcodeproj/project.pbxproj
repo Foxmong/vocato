@@ -10,31 +10,41 @@
 		01A9A82C7D626678AFCDB017 /* StudyFlashcardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F593C05E97E1F64F7515885E /* StudyFlashcardsView.swift */; };
 		0825ABEF107D6605329020E0 /* VocaTo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 521767D67E5AAFEFBF8F3BC8 /* VocaTo.xcdatamodeld */; };
 		1B6E1156D4398C0DB989F619 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A6A549E4057AC294E04A54 /* RootView.swift */; };
+		1F40CB462FFF353C97C58AE3 /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B849C0C0E8626ABA538D968F /* SubscriptionView.swift */; };
+		1FE840F9CE27406979682DB3 /* LanguageSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CB4CFFD96ECE38B2624D92 /* LanguageSettingsView.swift */; };
 		229EBA529FAC18053365595F /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898DF230D7F829105D4A25AC /* SettingsViewModel.swift */; };
+		23F204BD5F39B178A189B0CA /* RecommendedWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8770BDC147373A6854BB2D6 /* RecommendedWordsView.swift */; };
 		24511856E427A2B1690BEF45 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3294BE13506EBA50FA0BC0C /* Persistence.swift */; };
 		24D8F95EC183017776360E55 /* VocaToWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502DEF864B4C1BBCA39AD035 /* VocaToWidget.swift */; };
 		304EC7E1C5C715188F66A437 /* VocaToWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 185E02A6DDB02C1AE9875558 /* VocaToWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		34F27CB080F28F79A122E45A /* SpeechImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA9A94B6F7853DE8E0AAF07 /* SpeechImportView.swift */; };
+		361FC6397F1C820E7BF1B7D4 /* ScanImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF6884ABB6101A05D4DF9BE /* ScanImportView.swift */; };
+		3961F7F373B24558D07AB8B8 /* StudySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E357573CB5F97DE1D94C6 /* StudySettingsView.swift */; };
 		3DA7CC1B9089CAEF99F94C77 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E9EAA994AB5BC49A216160 /* NotificationService.swift */; };
 		424E44990CDFD2A6DA692121 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A882F7DE8EA9D684771304 /* HomeView.swift */; };
 		42A7952F98580901D71F0010 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7365460191A491C5682EF2CE /* App.swift */; };
+		52BD50238B9F05F4156F19FA /* StudyDictationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD17C103E3C4B790C715A311 /* StudyDictationView.swift */; };
+		595244FC7C9FAD84F04DE7AC /* StudyAutoPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4976D686F9044A2C82D77FFF /* StudyAutoPlayView.swift */; };
+		5EE083299BD0EE1CAA7E013A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADA98B969E33E5906421D55 /* OnboardingView.swift */; };
 		604728A9C0CFBFC195AC589D /* WordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA820B77AEA7C9BAE183FFF4 /* WordListView.swift */; };
+		64EEF1C18E7536CA5A057EB7 /* CSVImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA909CDEB2B7BBC4D375AAA /* CSVImportView.swift */; };
 		6D838D08B96B1CE18BBB88AF /* StudyMCQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07888D9263067EA631F88B /* StudyMCQView.swift */; };
 		703D977CDB6B83CF16BFBCF9 /* WordListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEFE18101C1B6594397A1AA /* WordListViewModel.swift */; };
+		7A6D49EC8DF557052623448C /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3DF54A0C7F8FB93AFAD471 /* LanguageManager.swift */; };
+		84A654E5A34ED3D73D81C020 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AF1B87B22C3D695C94A854 /* SubscriptionManager.swift */; };
 		89FB7F8DA444843F39AF8B9A /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3286B310B5BFB3E044EA6DF8 /* StatsViewModel.swift */; };
 		8C793375960F302DEA7B018F /* AddOrEditWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A60042FD92353A7FAE7A1EB /* AddOrEditWordView.swift */; };
+		8E5E88C8DF599FC3B82B287A /* ImportanceIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6ED6180FA82365EDA9FEDA /* ImportanceIndicator.swift */; };
 		9915BB2CC3E99740F7721AF4 /* GlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2B3F3C12369B4CE2D04E2A /* GlassCard.swift */; };
 		9CB6266051FE6A1DBD602B46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB9758725BDC7EBC24E1EA79 /* Assets.xcassets */; };
+		ADE5114DB8582EE02ECFF719 /* DailyStudyTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C130370525F41A77D051371B /* DailyStudyTracker.swift */; };
 		AF2FCFCAAB0FDE347BA36450 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21611D8FE3B6FB39DE420120 /* AppViewModel.swift */; };
 		B0463F82964D1C05FF9F4405 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3B0BFED5959F06E482B8F1 /* SettingsView.swift */; };
+		BC64EBB9D1966E469161FA4D /* GroupManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A9CBFB9CD6718768699DFD /* GroupManagementView.swift */; };
 		C1BF93BAB9EA4554D1DE0783 /* CSVService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C049182936EE62154F0B8E33 /* CSVService.swift */; };
 		D4BEE98540D3D5225E36873A /* StudyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8C2F5EBAE68C95488F9DF6 /* StudyViewModel.swift */; };
 		DBC110FD983644F0CEA6399C /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1088940DCCCD178EEF2EB318 /* StatsView.swift */; };
-		E1000001AAAABBBBCCCCDDDD /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2000001AAAABBBBCCCCDDDD /* SpeechService.swift */; };
-		E1000002AAAABBBBCCCCDDDD /* DailyStudyTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2000002AAAABBBBCCCCDDDD /* DailyStudyTracker.swift */; };
-		E1000003AAAABBBBCCCCDDDD /* ScanImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2000003AAAABBBBCCCCDDDD /* ScanImportView.swift */; };
-		E1000004AAAABBBBCCCCDDDD /* SpeechImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2000004AAAABBBBCCCCDDDD /* SpeechImportView.swift */; };
-		E1000005AAAABBBBCCCCDDDD /* RecommendedWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2000005AAAABBBBCCCCDDDD /* RecommendedWordsView.swift */; };
-		E1000006AAAABBBBCCCCDDDD /* CSVImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2000006AAAABBBBCCCCDDDD /* CSVImportView.swift */; };
+		FFF34F085BF982CE2F735781 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA174DDFC0A9AE98B2835C0C /* SpeechService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,33 +76,43 @@
 		0A60042FD92353A7FAE7A1EB /* AddOrEditWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditWordView.swift; sourceTree = "<group>"; };
 		0EBE51D8719E690B3288CF16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1088940DCCCD178EEF2EB318 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		13AF1B87B22C3D695C94A854 /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
 		185E02A6DDB02C1AE9875558 /* VocaToWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = VocaToWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8C2F5EBAE68C95488F9DF6 /* StudyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyViewModel.swift; sourceTree = "<group>"; };
 		21611D8FE3B6FB39DE420120 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		2ADA98B969E33E5906421D55 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		2DF6884ABB6101A05D4DF9BE /* ScanImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanImportView.swift; sourceTree = "<group>"; };
 		3286B310B5BFB3E044EA6DF8 /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
+		495E357573CB5F97DE1D94C6 /* StudySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySettingsView.swift; sourceTree = "<group>"; };
+		4976D686F9044A2C82D77FFF /* StudyAutoPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyAutoPlayView.swift; sourceTree = "<group>"; };
+		4D3DF54A0C7F8FB93AFAD471 /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		502DEF864B4C1BBCA39AD035 /* VocaToWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaToWidget.swift; sourceTree = "<group>"; };
 		5AEFE18101C1B6594397A1AA /* WordListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewModel.swift; sourceTree = "<group>"; };
+		5BA9A94B6F7853DE8E0AAF07 /* SpeechImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechImportView.swift; sourceTree = "<group>"; };
 		61A882F7DE8EA9D684771304 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		664F11D8C1B4158166644544 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		69CB4CFFD96ECE38B2624D92 /* LanguageSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSettingsView.swift; sourceTree = "<group>"; };
 		7365460191A491C5682EF2CE /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		898DF230D7F829105D4A25AC /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		89A6A549E4057AC294E04A54 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		98D1A12BC16530C408E815DE /* VocaTo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VocaTo.xcdatamodel; sourceTree = "<group>"; };
 		A0E9EAA994AB5BC49A216160 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		AD07888D9263067EA631F88B /* StudyMCQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMCQView.swift; sourceTree = "<group>"; };
+		AD17C103E3C4B790C715A311 /* StudyDictationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyDictationView.swift; sourceTree = "<group>"; };
+		B849C0C0E8626ABA538D968F /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
+		BBA909CDEB2B7BBC4D375AAA /* CSVImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVImportView.swift; sourceTree = "<group>"; };
 		BC2B3F3C12369B4CE2D04E2A /* GlassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassCard.swift; sourceTree = "<group>"; };
+		BD6ED6180FA82365EDA9FEDA /* ImportanceIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportanceIndicator.swift; sourceTree = "<group>"; };
 		C049182936EE62154F0B8E33 /* CSVService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVService.swift; sourceTree = "<group>"; };
+		C130370525F41A77D051371B /* DailyStudyTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStudyTracker.swift; sourceTree = "<group>"; };
+		C2A9CBFB9CD6718768699DFD /* GroupManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManagementView.swift; sourceTree = "<group>"; };
 		C3294BE13506EBA50FA0BC0C /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		CA820B77AEA7C9BAE183FFF4 /* WordListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListView.swift; sourceTree = "<group>"; };
 		DE3B0BFED5959F06E482B8F1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E8770BDC147373A6854BB2D6 /* RecommendedWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedWordsView.swift; sourceTree = "<group>"; };
 		EB9758725BDC7EBC24E1EA79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F593C05E97E1F64F7515885E /* StudyFlashcardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyFlashcardsView.swift; sourceTree = "<group>"; };
-		E2000001AAAABBBBCCCCDDDD /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
-		E2000002AAAABBBBCCCCDDDD /* DailyStudyTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStudyTracker.swift; sourceTree = "<group>"; };
-		E2000003AAAABBBBCCCCDDDD /* ScanImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanImportView.swift; sourceTree = "<group>"; };
-		E2000004AAAABBBBCCCCDDDD /* SpeechImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechImportView.swift; sourceTree = "<group>"; };
-		E2000005AAAABBBBCCCCDDDD /* RecommendedWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedWordsView.swift; sourceTree = "<group>"; };
-		E2000006AAAABBBBCCCCDDDD /* CSVImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVImportView.swift; sourceTree = "<group>"; };
+		FA174DDFC0A9AE98B2835C0C /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -108,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				BC2B3F3C12369B4CE2D04E2A /* GlassCard.swift */,
+				BD6ED6180FA82365EDA9FEDA /* ImportanceIndicator.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -116,18 +137,25 @@
 			isa = PBXGroup;
 			children = (
 				0A60042FD92353A7FAE7A1EB /* AddOrEditWordView.swift */,
+				BBA909CDEB2B7BBC4D375AAA /* CSVImportView.swift */,
+				C2A9CBFB9CD6718768699DFD /* GroupManagementView.swift */,
 				61A882F7DE8EA9D684771304 /* HomeView.swift */,
+				69CB4CFFD96ECE38B2624D92 /* LanguageSettingsView.swift */,
+				2ADA98B969E33E5906421D55 /* OnboardingView.swift */,
+				E8770BDC147373A6854BB2D6 /* RecommendedWordsView.swift */,
 				89A6A549E4057AC294E04A54 /* RootView.swift */,
+				2DF6884ABB6101A05D4DF9BE /* ScanImportView.swift */,
 				DE3B0BFED5959F06E482B8F1 /* SettingsView.swift */,
+				5BA9A94B6F7853DE8E0AAF07 /* SpeechImportView.swift */,
 				1088940DCCCD178EEF2EB318 /* StatsView.swift */,
+				4976D686F9044A2C82D77FFF /* StudyAutoPlayView.swift */,
+				AD17C103E3C4B790C715A311 /* StudyDictationView.swift */,
 				F593C05E97E1F64F7515885E /* StudyFlashcardsView.swift */,
 				AD07888D9263067EA631F88B /* StudyMCQView.swift */,
+				495E357573CB5F97DE1D94C6 /* StudySettingsView.swift */,
+				B849C0C0E8626ABA538D968F /* SubscriptionView.swift */,
 				CA820B77AEA7C9BAE183FFF4 /* WordListView.swift */,
 				4411A58DDCDE14CA7FE2510A /* Components */,
-				E2000005AAAABBBBCCCCDDDD /* RecommendedWordsView.swift */,
-				E2000006AAAABBBBCCCCDDDD /* CSVImportView.swift */,
-				E2000003AAAABBBBCCCCDDDD /* ScanImportView.swift */,
-				E2000004AAAABBBBCCCCDDDD /* SpeechImportView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -151,9 +179,9 @@
 			isa = PBXGroup;
 			children = (
 				C049182936EE62154F0B8E33 /* CSVService.swift */,
+				C130370525F41A77D051371B /* DailyStudyTracker.swift */,
 				A0E9EAA994AB5BC49A216160 /* NotificationService.swift */,
-				E2000001AAAABBBBCCCCDDDD /* SpeechService.swift */,
-				E2000002AAAABBBBCCCCDDDD /* DailyStudyTracker.swift */,
+				FA174DDFC0A9AE98B2835C0C /* SpeechService.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -197,9 +225,11 @@
 			isa = PBXGroup;
 			children = (
 				21611D8FE3B6FB39DE420120 /* AppViewModel.swift */,
+				4D3DF54A0C7F8FB93AFAD471 /* LanguageManager.swift */,
 				898DF230D7F829105D4A25AC /* SettingsViewModel.swift */,
 				3286B310B5BFB3E044EA6DF8 /* StatsViewModel.swift */,
 				1E8C2F5EBAE68C95488F9DF6 /* StudyViewModel.swift */,
+				13AF1B87B22C3D695C94A854 /* SubscriptionManager.swift */,
 				5AEFE18101C1B6594397A1AA /* WordListViewModel.swift */,
 			);
 			path = ViewModels;
@@ -301,28 +331,38 @@
 				8C793375960F302DEA7B018F /* AddOrEditWordView.swift in Sources */,
 				42A7952F98580901D71F0010 /* App.swift in Sources */,
 				AF2FCFCAAB0FDE347BA36450 /* AppViewModel.swift in Sources */,
+				64EEF1C18E7536CA5A057EB7 /* CSVImportView.swift in Sources */,
 				C1BF93BAB9EA4554D1DE0783 /* CSVService.swift in Sources */,
+				ADE5114DB8582EE02ECFF719 /* DailyStudyTracker.swift in Sources */,
 				9915BB2CC3E99740F7721AF4 /* GlassCard.swift in Sources */,
+				BC64EBB9D1966E469161FA4D /* GroupManagementView.swift in Sources */,
 				424E44990CDFD2A6DA692121 /* HomeView.swift in Sources */,
+				8E5E88C8DF599FC3B82B287A /* ImportanceIndicator.swift in Sources */,
+				7A6D49EC8DF557052623448C /* LanguageManager.swift in Sources */,
+				1FE840F9CE27406979682DB3 /* LanguageSettingsView.swift in Sources */,
 				3DA7CC1B9089CAEF99F94C77 /* NotificationService.swift in Sources */,
+				5EE083299BD0EE1CAA7E013A /* OnboardingView.swift in Sources */,
 				24511856E427A2B1690BEF45 /* Persistence.swift in Sources */,
+				23F204BD5F39B178A189B0CA /* RecommendedWordsView.swift in Sources */,
 				1B6E1156D4398C0DB989F619 /* RootView.swift in Sources */,
+				361FC6397F1C820E7BF1B7D4 /* ScanImportView.swift in Sources */,
 				B0463F82964D1C05FF9F4405 /* SettingsView.swift in Sources */,
 				229EBA529FAC18053365595F /* SettingsViewModel.swift in Sources */,
+				34F27CB080F28F79A122E45A /* SpeechImportView.swift in Sources */,
+				FFF34F085BF982CE2F735781 /* SpeechService.swift in Sources */,
 				DBC110FD983644F0CEA6399C /* StatsView.swift in Sources */,
 				89FB7F8DA444843F39AF8B9A /* StatsViewModel.swift in Sources */,
+				595244FC7C9FAD84F04DE7AC /* StudyAutoPlayView.swift in Sources */,
+				52BD50238B9F05F4156F19FA /* StudyDictationView.swift in Sources */,
 				01A9A82C7D626678AFCDB017 /* StudyFlashcardsView.swift in Sources */,
 				6D838D08B96B1CE18BBB88AF /* StudyMCQView.swift in Sources */,
+				3961F7F373B24558D07AB8B8 /* StudySettingsView.swift in Sources */,
 				D4BEE98540D3D5225E36873A /* StudyViewModel.swift in Sources */,
+				84A654E5A34ED3D73D81C020 /* SubscriptionManager.swift in Sources */,
+				1F40CB462FFF353C97C58AE3 /* SubscriptionView.swift in Sources */,
 				0825ABEF107D6605329020E0 /* VocaTo.xcdatamodeld in Sources */,
 				604728A9C0CFBFC195AC589D /* WordListView.swift in Sources */,
 				703D977CDB6B83CF16BFBCF9 /* WordListViewModel.swift in Sources */,
-				E1000001AAAABBBBCCCCDDDD /* SpeechService.swift in Sources */,
-				E1000002AAAABBBBCCCCDDDD /* DailyStudyTracker.swift in Sources */,
-				E1000003AAAABBBBCCCCDDDD /* ScanImportView.swift in Sources */,
-				E1000004AAAABBBBCCCCDDDD /* SpeechImportView.swift in Sources */,
-				E1000005AAAABBBBCCCCDDDD /* RecommendedWordsView.swift in Sources */,
-				E1000006AAAABBBBCCCCDDDD /* CSVImportView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,7 +404,7 @@
 		123B04AB298044F92C36F8FD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-                ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = VocaTo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -381,7 +421,7 @@
 		21A79A31FC88D6E37E7D1C94 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-                ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = VocaTo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
