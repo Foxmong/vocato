@@ -51,7 +51,7 @@ struct HomeView: View {
                         .padding(.horizontal)
                     }
                     
-                    // 그룹별 단어 현황
+                    // 그룹 섹션
                     VStack(alignment: .leading, spacing: 12) {
                         HStack {
                             Text("그룹")
@@ -59,48 +59,19 @@ struct HomeView: View {
                             
                             Spacer()
                             
-                            NavigationLink(destination: GroupManagementView()) {
-                                Text("관리")
+                            NavigationLink(destination: DetailedGroupView()) {
+                                Text("자세히 보기")
                                     .font(.caption)
                                     .foregroundStyle(Color("PrimaryGreen"))
                             }
                         }
                         .padding(.horizontal)
                         
-                        // 계층형 그룹 리스트
-                        VStack(spacing: 8) {
-                            ForEach(WordGroup.allCases, id: \.self) { group in
-                                NavigationLink(destination: GroupManagementView()) {
-                                    HStack(spacing: 12) {
-                                        Image(systemName: group.systemImage)
-                                            .font(.title3)
-                                            .foregroundStyle(Color("PrimaryGreen"))
-                                            .frame(width: 24)
-                                        
-                                        VStack(alignment: .leading, spacing: 2) {
-                                            Text(group.rawValue)
-                                                .font(.body)
-                                                .fontWeight(.medium)
-                                                .foregroundStyle(.primary)
-                                            
-                                            Text("\(getWordCount(for: group))개")
-                                                .font(.caption)
-                                                .foregroundStyle(.secondary)
-                                        }
-                                        
-                                        Spacer()
-                                        
-                                        Image(systemName: "chevron.right")
-                                            .font(.caption)
-                                            .foregroundStyle(.secondary)
-                                    }
-                                    .padding()
-                                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
-                                }
-                                .buttonStyle(PlainButtonStyle())
-                            }
-                        }
-                        .padding(.horizontal)
+                        // 그룹 미리보기 (좌우 분할 형태)
+                        DetailedGroupView()
+                            .frame(height: 300)
+                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
+                            .padding(.horizontal)
                     }
                     
                     // 다음 복습할 단어
@@ -270,6 +241,213 @@ struct HomeView: View {
         case .difficult:
             return words.filter { $0.importanceCount > 0 }.count
         }
+    }
+}
+
+// MARK: - Detailed Group View
+struct DetailedGroupView: View {
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Word.createdAt, ascending: true)], animation: .default)
+    private var words: FetchedResults<Word>
+    
+    @State private var selectedGroup: WordGroup = .all
+    @State private var showAddWordOptions = false
+    
+    var filteredWords: [Word] {
+        switch selectedGroup {
+        case .all:
+            return Array(words)
+        case .new:
+            return words.filter { $0.srsStage == 0 }
+        case .learning:
+            return words.filter { $0.srsStage == 1 }
+        case .reviewing:
+            return words.filter { $0.srsStage >= 2 && $0.srsStage <= 4 }
+        case .mastered:
+            return words.filter { $0.isMastered }
+        case .favorites:
+            return words.filter { $0.isFavorite }
+        case .difficult:
+            return words.filter { $0.importanceCount > 0 }
+        }
+    }
+    
+    var body: some View {
+        HStack(spacing: 0) {
+            // 좌측 그룹 선택 패널
+            VStack(alignment: .leading, spacing: 8) {
+                ForEach(WordGroup.allCases, id: \.self) { group in
+                    Button(action: {
+                        selectedGroup = group
+                    }) {
+                        HStack(spacing: 8) {
+                            Image(systemName: group.systemImage)
+                                .font(.caption)
+                                .foregroundColor(selectedGroup == group ? .white : Color("PrimaryGreen"))
+                                .frame(width: 16)
+                            
+                            VStack(alignment: .leading, spacing: 1) {
+                                Text(group.rawValue)
+                                    .font(.caption)
+                                    .fontWeight(.medium)
+                                    .foregroundColor(selectedGroup == group ? .white : .primary)
+                                
+                                Text("\(getWordCount(for: group))개")
+                                    .font(.caption2)
+                                    .foregroundColor(selectedGroup == group ? .white.opacity(0.8) : .secondary)
+                            }
+                            
+                            Spacer()
+                        }
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 6)
+                        .background(selectedGroup == group ? Color("PrimaryGreen") : Color.clear)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
+                
+                Spacer()
+                
+                // + 버튼
+                Button(action: {
+                    showAddWordOptions = true
+                }) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "plus.circle.fill")
+                        Text("추가")
+                    }
+                    .font(.caption)
+                    .foregroundColor(Color("PrimaryGreen"))
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 6)
+                    .background(.ultraThinMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                }
+                .buttonStyle(PlainButtonStyle())
+            }
+            .frame(width: 100)
+            .padding(.leading, 8)
+            .padding(.vertical, 8)
+            
+            Divider()
+            
+            // 우측 단어 리스트
+            VStack(alignment: .leading, spacing: 8) {
+                HStack {
+                    Text(selectedGroup.rawValue)
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                    
+                    Spacer()
+                    
+                    Text("\(filteredWords.count)개")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                .padding(.horizontal, 12)
+                .padding(.top, 8)
+                
+                ScrollView {
+                    LazyVStack(spacing: 4) {
+                        ForEach(filteredWords.prefix(5), id: \.uuid) { word in
+                            CompactWordRowView(word: word)
+                        }
+                        
+                        if filteredWords.count > 5 {
+                            HStack {
+                                Text("그 외 \(filteredWords.count - 5)개...")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                                Spacer()
+                            }
+                            .padding(.horizontal, 12)
+                            .padding(.top, 4)
+                        }
+                    }
+                }
+                .padding(.horizontal, 8)
+            }
+            .frame(maxWidth: .infinity)
+        }
+        .sheet(isPresented: $showAddWordOptions) {
+            AddWordOptionsView()
+        }
+    }
+    
+    private func getWordCount(for group: WordGroup) -> Int {
+        switch group {
+        case .all:
+            return words.count
+        case .new:
+            return words.filter { $0.srsStage == 0 }.count
+        case .learning:
+            return words.filter { $0.srsStage == 1 }.count
+        case .reviewing:
+            return words.filter { $0.srsStage >= 2 && $0.srsStage <= 4 }.count
+        case .mastered:
+            return words.filter { $0.isMastered }.count
+        case .favorites:
+            return words.filter { $0.isFavorite }.count
+        case .difficult:
+            return words.filter { $0.importanceCount > 0 }.count
+        }
+    }
+}
+
+// MARK: - Compact Word Row View
+struct CompactWordRowView: View {
+    let word: Word
+    
+    var body: some View {
+        HStack(spacing: 8) {
+            VStack(alignment: .leading, spacing: 1) {
+                Text(word.term ?? "")
+                    .font(.caption)
+                    .fontWeight(.medium)
+                    .lineLimit(1)
+                
+                Text(word.meaning ?? "")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+            }
+            
+            Spacer()
+            
+            // 상태 표시
+            HStack(spacing: 4) {
+                if word.isFavorite {
+                    Image(systemName: "heart.fill")
+                        .font(.caption2)
+                        .foregroundColor(.red)
+                }
+                
+                if word.importanceCount > 0 {
+                    HStack(spacing: 1) {
+                        Image(systemName: "star.fill")
+                            .font(.caption2)
+                            .foregroundColor(.yellow)
+                        Text("\(word.importanceCount)")
+                            .font(.caption2)
+                    }
+                }
+                
+                if word.isMastered {
+                    Image(systemName: "crown.fill")
+                        .font(.caption2)
+                        .foregroundColor(.yellow)
+                } else if word.accuracyCount > 0 {
+                    Text("\(word.accuracyCount)/15")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
+            }
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 4)
+        .background(.ultraThinMaterial.opacity(0.5))
+        .clipShape(RoundedRectangle(cornerRadius: 6))
     }
 }
 
